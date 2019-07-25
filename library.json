@@ -1,0 +1,180 @@
+{
+	"domain": {
+		"lower": ["T_NUM", "T_NUM", "T_NUM"],
+		"upper": ["T_NUM", "T_NUM", "T_NUM"],
+		"boundary": [{
+				"xLower": "T_BOUNDARY"
+			},
+			{
+				"xUpper": "T_BOUNDARY"
+			},
+			{
+				"yLower": "T_BOUNDARY"
+			},
+			{
+				"yUpper": "T_BOUNDARY"
+			},
+			{
+				"zLower": "T_BOUNDARY"
+			},
+			{
+				"zUpper": "T_BOUNDARY"
+			}
+		]
+	},
+	"bacteria": [{
+		"T_BACTERIA_ID": {
+			"description": "a description",
+			"affinity": [{
+				"T_SUBSTRATE": {
+					"description" :" asdsadsd",
+					"value": "T_NUM"
+				},
+				"description": "affinity description"
+				
+			}],
+			"consumption": {
+				"type": "T_NUM",
+				"range": "10 - 50"
+			},
+			"yield": "T_NUM",
+			"maintenance": "T_NUM",
+			"decay": "T_NUM",
+			"catabolism": [{
+				"T_SUBSTRATE": {
+					"value": "T_NUM"
+				}
+			}],
+			"anabolism": [{
+				"T_SUBSTRATE": {
+					"value": "T_NUM"
+				}
+			}],
+			"energy": [{
+				"T_ENERGY": {
+					"value": "T_NUM",
+					"flag": {}
+			}}],
+			"dissipation": "T_NUM",
+			"charge": [{
+				"T_ENERGY": {
+					"value": "T_INT"
+			}}]
+		}
+	}],
+	"substrates": [{
+		"T_SUBSTRATE_ID": {
+			"description": "Description for a substrate",
+			"status": "T_STATUS",
+			"diffusion": "T_NUM",
+			"energy": [{
+				"T_ENERGY": {
+					"value": "T_NUM",
+					"preferred": {}
+				}}
+			],
+			"charge": [{
+				"T_ENERGY":{
+					"value": "T_INT"
+			}}]
+		}
+	}],
+	"integration": {
+		"step": "T_NUM",
+		"limit": "T_NUM"
+	},
+	"mechanics": {
+		"step": "T_NUM",
+		"type": "T_MECHANIC",
+		"elasticNormal": "T_NUM",
+		"elasticTangential": "T_NUM",
+		"dampingNormal": "T_NUM",
+		"dampingTangential": "T_NUM",
+		"staticYield": "T_NUM",
+		"tangentialDamping": "T_BOOL",
+		"wallForces": [{
+			"T_WALL_FORCE_ID": {
+				"type": "T_MECHANIC",
+				"elasticNormal": "T_NUM",
+				"elasticTangential": "T_NUM",
+				"dampingNormal": "T_NUM",
+				"dampingTangential": "T_NUM",
+				"staticYield": "T_NUM",
+				"tangentialDamping": "T_BOOL",
+				"plane": "T_AXIS",
+				"lower": "T_NUM",
+				"upper": "T_NUM"
+			}
+		}],
+		"wallAdhesiveForces": [{
+			"T_WALL_ADHESIVE_FORCE_ID": {
+				"type": "T_MECHANIC",
+				"elastic": "T_NUM",
+				"plane": "T_AXIS",
+				"lower": "T_NUM",
+				"upper": "T_NUM"
+			}
+		}],
+		"viscous": "T_NUM",
+		"epsCohesion": {
+			"elastic": "T_NUM"
+		}
+	},
+	"diffusion": {
+		"step": "T_NUM",
+		"grid": [{
+				"x": "T_INT"
+			},
+			{
+				"y": "T_INT"
+			},
+			{
+				"z": "T_INT"
+			}
+		],
+		"layer": "T_NUM",
+		"boundary": [{
+				"xLower": "T_DIF_BOUNDARY"
+			},
+			{
+				"xUpper": "T_DIF_BOUNDARY"
+			},
+			{
+				"yLower": "T_DIF_BOUNDARY"
+			},
+			{
+				"yUpper": "T_DIF_BOUNDARY"
+			},
+			{
+				"zLower": "T_DIF_BOUNDARY"
+			},
+			{
+				"zUpper": "T_DIF_BOUNDARY"
+			}
+		],
+		"tolerance": "T_NUM",
+		"maximum": "T_INT",
+		"every": "T_INT"
+	},
+	"division": {
+		"diameter": "T_NUM",
+		"seed": "T_INT"
+	},
+	"death": {
+		"diameter": "T_NUM"
+	},
+	"growth": "T_GROWTH",
+	"eps": {
+		"density": "T_NUM",
+		"extract": {
+			"ratio": "T_NUM",
+			"seed": "T_INT"
+		}
+	},
+	"initialCondition": {
+		"concentration": [{
+			"substrate": "T_SUBSTRATE",
+			"values": [0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01]	
+		}]
+	}
+}

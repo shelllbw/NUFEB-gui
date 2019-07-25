@@ -1,0 +1,212 @@
+{
+	"domain": {
+		"lower": [-1.0, -2.0, -3.0],
+		"upper": [1.0, 2.0, 3.0],
+		"boundary": [{
+				"xLower": "periodic"
+			},
+			{
+				"xUpper": "periodic"
+			},
+			{
+				"yLower": "periodic"
+			},
+			{
+				"yUpper": "periodic"
+			},
+			{
+				"zLower": "fixed"
+			},
+			{
+				"zUpper": "fixed"
+			}
+		]
+	},
+	"bacteria": [{
+		"het": {
+			"affinity": [{
+				"nh4": {
+					"value": 1e-5
+				}},
+				{
+				"o2" : {
+					"value": 1e-5
+				}}
+			],
+			"consumption": 1e-5,
+			"yield": 0.1,
+			"maintenance": 1e-5,
+			"decay": 1e-5,
+			"catabolism": [{
+					"nh4": {
+						"value": 1.5
+					}
+				},
+				{
+					"o2": {
+						"value": -1.0
+					}
+				}
+			],
+			"anabolism": [{
+					"nh4": {
+						"value": 1.5
+					}
+				},
+				{
+					"o2": {
+						"value": -1.0
+					}
+				}
+			],
+			"energy": [{
+				"not-hydrated": {
+					"value": 73.0,
+					"flag": {}
+			}}],
+			"dissipation": 3500.0,
+			"charge": [{
+				"fully-protonated": {
+					"value": 0
+		}}]
+	}}],
+	"substrates": [{
+		"nh4": {
+			"status": "liquid",
+			"diffusion": 1e-5,
+			"energy": [{
+					"fully-protonated": {
+						"value": -73.0
+				}},
+				{
+						"1st-deprotonated": {
+						"value": -73.0,
+						"preferred": {}
+				}}
+			],
+			"charge": [{
+				"fully-protonated": {
+					"value": 1
+			}}, {
+				"1st-deprotonated": {
+					"value": 0
+			}}]
+		},
+		"o2": {
+			"status": "liquid",
+			"diffusion": 1e-5,
+			"energy": [{
+				"2nd-deprotonated": {
+					"value": -73.0,
+					"preferred": {}
+				}},
+				{
+				"3rd-deprotonated": {
+					"value": -73.0
+				}}
+			],
+			"charge": [{
+				"fully-protonated": {
+					"value": 0
+				}},
+				{
+				"1st-deprotonated": {
+					"value": -1
+				}}
+			]
+		}
+	}],
+	"integration": {
+		"step": 720.0,
+		"limit": 1e-7
+	},
+	"mechanics": {
+		"step": 1e-2,
+		"type": "hooke-history",
+		"elasticNormal": 1e-4,
+		"elasticTangential": 1e-4,
+		"dampingNormal": 1e-5,
+		"dampingTangential": 1e-5,
+		"staticYield": 1.5,
+		"tangentialDamping": false,
+		"walls": [{
+			"hooke-history": {
+				"elasticNormal": 1e-4,
+				"elasticTangential": 1e-4,
+				"dampingNormal": 1e-5,
+				"dampingTangential": 1e-5,
+				"staticYield": 1.5,
+				"tangentialDamping": false,
+				"plane": "z",
+				"lower": 0.0,
+				"upper": 1.0
+
+			}
+		}, {
+			"adhesion": {
+				"elastic": 1e-4,
+				"plane": "z",
+				"lower": 0.0,
+				"upper": 1.0
+			}
+		}],
+		"viscous": 1e-5,
+		"epsCohesion": {
+			"elastic": 1e-4
+		}
+	},
+	"diffusion": {
+		"step": 1e-4,
+		"grid": [{
+			"x": 50
+		}, {
+			"y": 25
+		}, {
+			"z": 20.0
+		}],
+		"layer": 5e-6,
+		"boundary": [{
+				"xLower": "periodic"
+			},
+			{
+				"xUpper": "periodic"
+			},
+			{
+				"yLower": "periodic"
+			},
+			{
+				"yUpper": "periodic"
+			},
+			{
+				"zLower": "neumann"
+			},
+			{
+				"zUpper": "dirithlet"
+			}
+		],
+		"tolerance": 1e-7,
+		"maximum": 20000,
+		"every": 10
+	},
+	"division": {
+		"diameter": 1.3e-6,
+		"seed": 12345
+	},
+	"death": {
+		"diameter": 5e-7
+	},
+	"growth": "energy",
+	"eps": {
+		"density": 30.0,
+		"extract": {
+			"ratio": 1.3,
+			"seed": 12345
+		}
+	},
+	"initialCondition": {
+		"concentration": [{
+			"substrate": "nh4",
+			"values": [0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01]
+		}]
+	}
+}

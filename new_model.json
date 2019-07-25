@@ -1,0 +1,53 @@
+{
+	"domain": {
+		"lower": [-1.0, -2.0, -3.0],
+		"upper": [1.0, 2.0, 3.0],
+		"boundary":  [
+			{"x_min": "fixed"},
+			{"x_max": "fixed"},
+			{"y_min": "fixed"},
+			{"y_max": "fixed"},
+			{"z_min": "fixed"},
+			{"z_max": "fixed"}
+		]
+	},
+	"bacteria": [],
+	"substrates": [],
+	"integration": {
+		"step": 720.0,
+		"limit": 1e-7
+	},
+	"mechanics": {},
+	"diffusion": {
+		"step": 1e-4,
+		"grid": [{"x": 50}, {"y": 25}, {"z": 20.0}],
+		"layer": 5e-6,
+		"boundary": [
+			{"x_min": "fixed"},
+			{"x_max": "fixed"},
+			{"y_min": "fixed"},
+			{"y_max": "fixed"},
+			{"z_min": "fixed"},
+			{"z_max": "fixed"}
+		],
+		"tolerance": 1e-7,
+		"maximum": 20000,
+		"every": 10
+	},
+	"division": {
+		"diameter": 1.3e-6,
+		"seed": 12345
+	},
+	"death": {
+		"diameter": 5e-7
+	},
+	"growth": "energy",
+	"eps": {
+		"density": 30.0,
+		"extract": {
+			"ratio": 1.3,
+			"seed": 12345
+		}
+	},
+	"initialCondition": {}
+}
